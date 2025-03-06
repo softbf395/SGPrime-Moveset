@@ -14,11 +14,10 @@ function saveFilee(path, content, useURLV)
   end
 end
 function spawnRBXL(URL)
-  local model = LoadCustomInstance(URL)
-  return model:GetChildren()[1]
+  return LoadCustomInstance(rbxlURL)
 end
 saveFilee(songP, songURL, true)
-local PRIME=spawnRBXL(rbxlURL)
+local PRIME=spawnRBXL(rbxlURL).Rig
 PRIME.HumanoidRootPart.CFrame=game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
 PRIME.Head.title.TextLabel.GUI.Enabled=false
 local chr = game.Players.LocalPlayer.Character
