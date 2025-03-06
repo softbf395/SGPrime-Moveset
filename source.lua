@@ -21,7 +21,7 @@ saveFilee(songP, songURL, true)
 local PRIME=spawnRBXL(rbxlP)
 PRIME.HumanoidRootPart.CFrame=(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 PRIME.Head.title.TextLabel.GUI.Enabled=false
-PRIME.Head.title.TextLabel.LovalScript.Enabled=false
+PRIME.Head.title.TextLabel.LocalScript.Enabled=false
 local chr = game.Players.LocalPlayer.Character
 PRIME.Head.Particles.Parent=chr.Head
 PRIME.Head.title.Parent=chr.Head
