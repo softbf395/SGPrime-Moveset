@@ -14,9 +14,8 @@ function saveFilee(path, content, useURLV)
   end
 end
 function spawnRBXL(path)
-  local InsertService = game:GetService("InsertService")
   local ins=getcustomasset(folder..path)
-  return InsertService:LoadAsset(ins)
+  return game:GetObjects(ins)
 end
 saveFilee(songP, songURL, true)
 local PRIME=spawnRBXL(rbxlP).Rig
