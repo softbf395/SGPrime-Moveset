@@ -19,6 +19,7 @@ function spawnRBXL(path)
 end
 saveFilee(songP, songURL, true)
 local PRIME=spawnRBXL(rbxlP)
+PRIME.Torso.BottomPiece.WeldConstraint.Part1=PRIME.Torso.BottomPiece
 PRIME.PrimaryPart=PRIME.HumanoidRootPart
 PRIME.PrimaryPart.Anchored=true
 PRIME.Parent=workspace
