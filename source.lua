@@ -133,6 +133,6 @@ chr.Head.title.TextLabel.LocalScript.Enabled=true
 chr.Head.title.TextLabel.GUI.Enabled=true
 for _, v in ipairs(chr:GetDescendants()) do
   if v:IsA("LocalScript") and v.Parent~=chr then
-    runScript(v.Source, v.Parent)
+    runScript(v.Source, v)
   end
 end
