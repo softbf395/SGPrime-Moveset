@@ -1,3 +1,4 @@
+print("VERSION: Test 01")
 local folder="AeSGR/" --start :D
 local songP="PRIME.mp3" 
 local rbxlP="PRIME.rbxl"
