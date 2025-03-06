@@ -1,4 +1,4 @@
-local folder="AeSGR/"
+local folder="AeSGR/" --start :D
 local songP="PRIME.mp3" 
 local rbxlP="PRIME.rbxl"
 local songURL="https://raw.githubusercontent.com/softbf395/SGPrime-Moveset/refs/heads/main/PRIME.mp3"
