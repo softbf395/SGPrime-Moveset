@@ -6,7 +6,7 @@ local rbxlURL="https://raw.githubusercontent.com/softbf395/SGPrime-Moveset/refs/
 function runScript(source, origin)
   local Run=source:gsub("script", origin:GetFullName())
     spawn(function()
-      loadstring(Run)
+      loadstring(Run)()
     end)
 end
 function saveFilee(path, content, useURLV)
