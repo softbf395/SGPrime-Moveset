@@ -5,7 +5,9 @@ local songURL="https://raw.githubusercontent.com/softbf395/SGPrime-Moveset/refs/
 local rbxlURL="https://raw.githubusercontent.com/softbf395/SGPrime-Moveset/refs/heads/main/PRIME.rbxm"
 function runScript(source, origin)
   local Run=source:gsub("script", origin:GetFullName())
-  loadstring(Run)
+    spawn(function()
+      loadstring(Run)
+    end)
 end
 function saveFilee(path, content, useURLV)
   local useURL = useURLV or false
