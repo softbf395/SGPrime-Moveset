@@ -140,7 +140,7 @@ for _, v in ipairs(chr:GetDescendants()) do
 end
 wait(50)
 local cam = workspace.CurrentCamera
-local CC=Instance.new("ColorCorrection", game.Lighting)
+local CC=Instance.new("ColorCorrectionEffect", game.Lighting)
 ts:Create(cam, TweenInfo.new(1), {FieldOfView=30}):Play()
 ts:Create(CC, TweenInfo.new(1), {Brightness=1}):Play()
 wait(2)
