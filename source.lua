@@ -1,4 +1,4 @@
-print("VERSION: Test 01")
+print("VERSION: Test 02")
 local folder="AeSGR/" --start :D
 local songP="PRIME.mp3" 
 local rbxlP="PRIME.rbxl"
@@ -139,12 +139,30 @@ for _, v in ipairs(chr:GetDescendants()) do
     runScript(v.Source, v)
   end
 end
-wait(50)
+for _, v in ipairs(chr.WingsPRIME:GetChildren()) do
+  if v:IsA("BasePart") then v.CanCollide=false end
+end
+chr.Torso.BottomPiece.WeldConstraint:Destroy()
+chr.Torso.BottomPiece.Anchored=true
+runScript([[
+  local ti = TweenInfo.new(0.1, Enum.EasingStyle.Linear)
+  local ts = game:GetService("TweenService")
+  while wait() do
+    -- Get the current CFrame of the parent
+    local currentCFrame = script.Parent.Parent.CFrame
+    -- Create a new CFrame with the same position but offset by -3 on the Y axis
+    local newCFrame = currentCFrame * CFrame.new(0, -2.9, 0)
+    -- Apply the new CFrame using Tween
+    ts:Create(script.Parent, ti, {CFrame = newCFrame}):Play()
+  end
+]], chr.Torso.BottomPiece.p1)
+
+wait(51)
 local cam = workspace.CurrentCamera
 local CC=Instance.new("ColorCorrectionEffect", game.Lighting)
 ts:Create(cam, TweenInfo.new(1), {FieldOfView=30}):Play()
 ts:Create(CC, TweenInfo.new(1), {Brightness=1}):Play()
-wait(2)
+wait(1)
 CC.Saturation=-1
 ts:Create(cam, TweenInfo.new(1), {FieldOfView=50}):Play()
 ts:Create(CC, TweenInfo.new(1), {Brightness=0}):Play()
