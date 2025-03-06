@@ -1,4 +1,4 @@
-print("VERSION: Test 02-01")
+print("VERSION: Test 02-01") --version
 local folder="AeSGR/" --start :D
 local songP="PRIME.mp3" 
 local rbxlP="PRIME.rbxl"
