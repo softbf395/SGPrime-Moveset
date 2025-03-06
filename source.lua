@@ -1,4 +1,4 @@
-print("VERSION: Test 02")
+print("VERSION: Test 02-01")
 local folder="AeSGR/" --start :D
 local songP="PRIME.mp3" 
 local rbxlP="PRIME.rbxl"
@@ -79,34 +79,45 @@ end
 
 local isIdle = false
 
---[[game:GetService("RunService").RenderStepped:Connect(function()
+game:GetService("RunService").RenderStepped:Connect(function()
     if humanoid.MoveDirection.Magnitude < 0.1 then
         if not isIdle then
             isIdle = true
             
             -- Floating 3 studs above ground
-            tweenC0(rootJoint, CFrame.new(0, 3, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)), 0.5)
+            spawn(function()
+                while isIdle do
+                    tweenC0(rootJoint, CFrame.new(0, 3, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)), 0.5)
+                    wait(0.5)
+                    tweenC0(rootJoint, CFrame.new(1, 4, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)), 0.5)
+                    wait(0.5)
+                    tweenC0(rootJoint, CFrame.new(-1, 2, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)), 0.5)
+                    wait(0.5)
+                    tweenC0(rootJoint, CFrame.new(-1.5, 4, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)), 0.5)
+                    wait(0.5)
+                end
+            end)
 
             -- **Arm Positions (Raised & Tilted)**
-            tweenC0(rightShoulder, CFrame.new(1.2, 0.5, 0) * CFrame.Angles(math.rad(-90), math.rad(15), math.rad(30)), 0.5)
-            tweenC0(leftShoulder, CFrame.new(-1.2, 0.5, 0) * CFrame.Angles(math.rad(-90), math.rad(-15), math.rad(-30)), 0.5)
+            tweenC0(rightShoulder, CFrame.new(1.2, 0.5, 0) * CFrame.Angles(math.rad(180), math.rad(15), math.rad(-25)), 0.5)
+            tweenC0(leftShoulder, CFrame.new(-1.2, 0.5, 0) * CFrame.Angles(math.rad(70), math.rad(-15), math.rad(-30)), 0.5)
 
             -- **Leg Positions (Bent Slightly Forward)**
-            tweenC0(rightHip, CFrame.new(0.5, -1, 0.2) * CFrame.Angles(math.rad(20), 0, math.rad(10)), 0.5)
-            tweenC0(leftHip, CFrame.new(-0.5, -1, 0.2) * CFrame.Angles(math.rad(20), 0, math.rad(-10)), 0.5)
+            tweenC0(rightHip, CFrame.new(0, -1, 0.2) * CFrame.Angles(math.rad(20), math.rad(90), math.rad(10)), 0.5)
+            tweenC0(leftHip, CFrame.new(0, -1, 0.2) * CFrame.Angles(math.rad(-20), math.rad(-90), math.rad(0)), 0.5)
         end
     else
         if isIdle then
             isIdle = false
             -- Reset Position
-            tweenC0(rootJoint, CFrame.new(0, 0, 0), 0.5)
-            tweenC0(rightShoulder, CFrame.new(1, 0.5, 0), 0.5)
-            tweenC0(leftShoulder, CFrame.new(-1, 0.5, 0), 0.5)
-            tweenC0(rightHip, CFrame.new(0.5, -1, 0), 0.5)
-            tweenC0(leftHip, CFrame.new(-0.5, -1, 0), 0.5)
+            tweenC0(rootJoint, CFrame.new(0, 3, 0), 0.5)
+            tweenC0(rightShoulder, CFrame.new(1, 0.5, 0) * CFrame.Angles(math.rad(0), math.rad(90), math.rad(0)), 0.5)
+            tweenC0(leftShoulder, CFrame.new(-1, 0.5, 0) * CFrame.Angles(math.rad(0), math.rad(-90), math.rad(0)), 0.5)
+            tweenC0(rightHip, CFrame.new(0, -1, 0) * CFrame.Angles(math.rad(0), math.rad(90), math.rad(0)), 0.5)
+            tweenC0(leftHip, CFrame.new(-0, -1, 0) * CFrame.Angles(math.rad(0), math.rad(-90), math.rad(0)), 0.5)
         end
     end
-end)]] -- broken
+end) -- fixed
 
 
 ms:ReqChr("Saitama" --[[Cyborg]])
