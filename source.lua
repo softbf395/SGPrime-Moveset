@@ -21,6 +21,7 @@ saveFilee(songP, songURL, true)
 local PRIME=spawnRBXL(rbxlP)
 PRIME.HumanoidRootPart.CFrame=(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 PRIME.Head.title.TextLabel.GUI.Enabled=false
+PRIME.Head.title.TextLabel.LovalScript.Enabled=false
 local chr = game.Players.LocalPlayer.Character
 PRIME.Head.Particles.Parent=chr.Head
 PRIME.Head.title.Parent=chr.Head
@@ -28,7 +29,9 @@ PRIME.Torso.BottomPiece.Parent=chr.Torso
 PRIME.WingsPRIME.Parent=chr
 chr.Torso.BottomPiece.WeldConstraint.Part0=chr.Torso
 chr.Torso.BottomPiece.WeldConstraint.Part1=chr.Torso.BottomPiece
-PRIME.Parent:Destroy()
+PRIME:Destroy()
+chr.Head.title.TextLabel.LocalScript.Enabled=true
+chr.Head.title.TextLabel.GUI.Enabled=true
 local humanoid = chr:FindFirstChildOfClass("Humanoid")
 local Moveset="T"
 local ms=loadstring(game:HttpGet("https://raw.githubusercontent.com/softbf395/Utilities/refs/heads/main/TSB/V2/movesets.lua"))()
