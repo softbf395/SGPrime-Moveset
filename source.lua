@@ -150,4 +150,17 @@ ts:Create(cam, TweenInfo.new(1), {FieldOfView=50}):Play()
 ts:Create(CC, TweenInfo.new(1), {Brightness=0}):Play()
 wait(1)
 wait(20)
+CC.Brightness=1
 ts:Create(cam, TweenInfo.new(1), {FieldOfView=70}):Play()
+ts:Create(CC, TweenInfo.new(0), {Saturation=0}):Play()
+ts:Create(CC, TweenInfo.new(1), {Brightness=0}):Play()
+wait(10)
+CC.Brightness=1
+CC.Saturation=-1
+ts:Create(cam, TweenInfo.new(1), {FieldOfView=50}):Play()
+ts:Create(CC, TweenInfo.new(1), {Brightness=0}):Play()
+wait(10)
+CC.Brightness=1
+ts:Create(cam, TweenInfo.new(1), {FieldOfView=70}):Play()
+ts:Create(CC, TweenInfo.new(0), {Saturation=0}):Play()
+ts:Create(CC, TweenInfo.new(1), {Brightness=0}):Play()
