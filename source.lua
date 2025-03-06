@@ -34,8 +34,6 @@ PRIME.WingsPRIME.Parent=chr
 chr.Torso.BottomPiece.WeldConstraint.Part0=chr.Torso
 chr.Torso.BottomPiece.WeldConstraint.Part1=chr.Torso.BottomPiece
 PRIME:Destroy()
-chr.Head.title.TextLabel.LocalScript.Enabled=true
-chr.Head.title.TextLabel.GUI.Enabled=true
 local humanoid = chr:FindFirstChildOfClass("Humanoid")
 local Moveset="T"
 local ms=loadstring(game:HttpGet("https://raw.githubusercontent.com/softbf395/Utilities/refs/heads/main/TSB/V2/movesets.lua"))()
@@ -127,3 +125,5 @@ local color = colors[math.random(1, #colors)]
     wait(0.5)
     blast:Destroy()
 end, --[[Callback for when used]] 2, --[[Cooldown for custom moves]] "Blast.")
+chr.Head.title.TextLabel.LocalScript.Enabled=true
+chr.Head.title.TextLabel.GUI.Enabled=true
