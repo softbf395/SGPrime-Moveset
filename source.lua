@@ -18,7 +18,7 @@ function spawnRBXL(path)
   return game:GetObjects(ins):GetChildren[1]
 end
 saveFilee(songP, songURL, true)
-local PRIME=spawnRBXL(rbxlP).Rig
+local PRIME=spawnRBXL(rbxlP)
 PRIME:SetPivot(game.Players.LocalPlayer.Character.Head.CFrame)
 PRIME.Head.title.TextLabel.GUI.Enabled=false
 local chr = game.Players.LocalPlayer.Character
