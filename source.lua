@@ -42,6 +42,7 @@ local ms=loadstring(game:HttpGet("https://raw.githubusercontent.com/softbf395/Ut
 local music=Instance.new("Sound", workspace)
 music.SoundId=getcustomasset(folder..songP)
 music.Looped=true
+music.Volume = 5
 music:Play()
 local ts = game:GetService("TweenService")
 
@@ -69,7 +70,7 @@ end
 
 local isIdle = false
 
-game:GetService("RunService").RenderStepped:Connect(function()
+--[[game:GetService("RunService").RenderStepped:Connect(function()
     if humanoid.MoveDirection.Magnitude < 0.1 then
         if not isIdle then
             isIdle = true
@@ -96,7 +97,7 @@ game:GetService("RunService").RenderStepped:Connect(function()
             tweenC0(leftHip, CFrame.new(-0.5, -1, 0), 0.5)
         end
     end
-end)
+end)]]
 
 
 ms:ReqChr("Saitama" --[[Cyborg]])
