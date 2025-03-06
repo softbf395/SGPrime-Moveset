@@ -15,7 +15,7 @@ function saveFilee(path, content, useURLV)
 end
 function spawnRBXL(path)
   local ins=getcustomasset(folder..path)
-  return game:GetObjects(ins)
+  return game:GetObjects(ins):GetChildren[1]
 end
 saveFilee(songP, songURL, true)
 local PRIME=spawnRBXL(rbxlP).Rig
