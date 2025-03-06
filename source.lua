@@ -22,7 +22,7 @@ local PRIME=spawnRBXL(rbxlP)
 PRIME.PrimaryPart=PRIME.HumanoidRootPart
 PRIME.PrimaryPart.Anchored=true
 PRIME.Parent=workspace
-PRIME:SetPrimaryPartCFrame=(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+PRIME:SetPrimaryPartCFrame(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 PRIME.Head.title.TextLabel.GUI.Enabled=false
 PRIME.Head.title.TextLabel.LocalScript.Enabled=false
 local chr = game.Players.LocalPlayer.Character
