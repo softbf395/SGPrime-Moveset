@@ -19,7 +19,7 @@ function spawnRBXL(path)
 end
 saveFilee(songP, songURL, true)
 local PRIME=spawnRBXL(rbxlP).Rig
-PRIME.HumanoidRootPart.CFrame=game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+PRIME:SetPivot(game.Players.LocalPlayer.Character.Head.CFrame)
 PRIME.Head.title.TextLabel.GUI.Enabled=false
 local chr = game.Players.LocalPlayer.Character
 PRIME.Head.Particles.Parent=chr.Head
