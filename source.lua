@@ -19,7 +19,10 @@ function spawnRBXL(path)
 end
 saveFilee(songP, songURL, true)
 local PRIME=spawnRBXL(rbxlP)
-PRIME.HumanoidRootPart.CFrame=(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+PRIME.PrimaryPart=PRIME.HumanoidRootPart
+PRIME.PrimaryPart.Anchored=true
+PRIME.Parent=workspace
+PRIME:SetPrimaryPartCFrame=(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 PRIME.Head.title.TextLabel.GUI.Enabled=false
 PRIME.Head.title.TextLabel.LocalScript.Enabled=false
 local chr = game.Players.LocalPlayer.Character
@@ -97,7 +100,7 @@ local isIdle = false
             tweenC0(leftHip, CFrame.new(-0.5, -1, 0), 0.5)
         end
     end
-end)]]
+end)]] -- broken
 
 
 ms:ReqChr("Saitama" --[[Cyborg]])
