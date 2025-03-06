@@ -3,6 +3,10 @@ local songP="PRIME.mp3"
 local rbxlP="PRIME.rbxl"
 local songURL="https://raw.githubusercontent.com/softbf395/SGPrime-Moveset/refs/heads/main/PRIME.mp3"
 local rbxlURL="https://raw.githubusercontent.com/softbf395/SGPrime-Moveset/refs/heads/main/PRIME.rbxm"
+function runScript(source, origin)
+  local Run=source:gsub("script", origin:GetFullName())
+  loadstring(Run)
+end
 function saveFilee(path, content, useURLV)
   local useURL = useURLV or false
   if not isfile(path) then
@@ -127,3 +131,8 @@ local color = colors[math.random(1, #colors)]
 end, --[[Callback for when used]] 2, --[[Cooldown for custom moves]] "Blast.")
 chr.Head.title.TextLabel.LocalScript.Enabled=true
 chr.Head.title.TextLabel.GUI.Enabled=true
+for _, v in ipairs(chr:GetDescendants()) do
+  if v:IsA("LocalScript") and v.Parent~=chr then
+    runScript(v.Source, v.Parent)
+  end
+end
