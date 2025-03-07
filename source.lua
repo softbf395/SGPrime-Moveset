@@ -222,7 +222,11 @@ local uis=game:GetService("UserInputService")
 uis.InputBegan:Connect(function(input, typing)
     local ismobile = uis.TouchEnabled
     if typing then return end
-    if table.find(CD, input.KeyCode.Name) then return end
+    for i, v in ipairs(CD) do
+      if i==input.KeyCode.Name then
+        return
+      end
+    end
     if input.KeyCode==Enum.KeyCode.Z then
       if ismobile then
         CD[input.KeyCode.Name]=true
