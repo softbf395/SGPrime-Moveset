@@ -1,4 +1,4 @@
-print("VERSION: Test 02-02") --version!!
+print("VERSION: 0.0.1 Test 02-02") --version!!
 print("Creator: Aedaniss7 on scriptblox")
 local folder="AeSGR/" --start :D
 local songP="PRIME.mp3" 
