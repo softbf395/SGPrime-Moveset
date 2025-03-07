@@ -229,10 +229,10 @@ uis.InputBegan:Connect(function(input, typing)
     if typing then return end
     if ismobile then
       if inv.Keybinds[input.KeyCode.Name] then
-        inv.Keybinds[input.KeyCode.Name].Interactible=false
+        inv.Keybinds[input.KeyCode.Name].Active=false
         inv.Keybinds[input.KeyCode.Name].CD.Size=UDim2.new(1,0,-1,0)
         game:GetService("TweenService"):Create(inv.Keybinds[input.KeyCode.Name].CD, TweenInfo.new(CD[input.KeyCode.Name]), {Size=UDim2.new(1,0,0,0)}):Play()
-        spawn(function() wait(CD[input.KeyCode.Name]) inv.Keybinds[input.KeyCode.Name].Interactible=false end)
+        spawn(function() wait(CD[input.KeyCode.Name]) inv.Keybinds[input.KeyCode.Name].Active=false end)
       end
     end
         
