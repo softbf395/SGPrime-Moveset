@@ -220,7 +220,7 @@ end)
 local uis=game:GetService("UserInputService")
 uis.InputBegan:Connect(function(input, typing)
     if typing then return end
-    if input.KeyCode==Enum.Keycode.Z then
+    if input.KeyCode==Enum.KeyCode.Z then
       VIM:SendKeyEvent(true, "One", false)
       wait(0.1)
       VIM:SendKeyEvent(false, "One", false)
