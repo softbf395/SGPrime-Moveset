@@ -52,11 +52,24 @@ PRIME.Torso.BottomPiece.WeldConstraint.Part1=PRIME.Torso.BottomPiece
 PRIME.PrimaryPart=PRIME.HumanoidRootPart
 PRIME.PrimaryPart.Anchored=true
 PRIME.Parent=workspace
+local inv=PRIME.inv
 PRIME.Head.title.TextLabel.Visible=true
 PRIME:SetPrimaryPartCFrame(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 PRIME.Head.title.TextLabel.GUI.Enabled=false
 PRIME.Head.title.TextLabel.LocalScript.Enabled=false
 local chr = game.Players.LocalPlayer.Character
+inv.Parent=game.Players.LocalPlayer.PlayerGui
+game.Players.LocalPlayer.PlayerGui.Hotbar.Enabled=false
+local VIM = game:GetService("VirtualInputManager")
+for i, v in ipairs(inv.Keybinds:GetChildren()) do
+    local keyName = string.upper(v.Name)
+    v.MouseButton1Click:Connect(function() VIM:SendKeyEvent(true, keyName, false, nil)
+    wait(0.1)
+    VIM:SendKeyEvent(false, keyName, false, nil) end)
+end
+if game:GetService("UserInputService").TouchEnabled==false then
+  inv.Keybinds:Destroy()
+end
 PRIME.Head.Particles.Parent=chr.Head
 PRIME.Head.title.Parent=chr.Head
 PRIME.Torso.BottomPiece.Parent=chr.Torso
@@ -190,7 +203,20 @@ runScript([[
     ts:Create(script.Parent, ti, {CFrame = newCFrame}):Play()
   end
 ]], chr.Torso.BottomPiece.p1)
-
+spawn(function() --the wing animations--
+    wait(3)
+    chr.WingsPRIME:SetAttribute("SpeedZ", 12)
+    wait(50)
+    local maxGlitches=10
+    while maxGlitches>0 do
+      chr.WingsPRIME:SetAttribute("SpeedZ", 12)
+      wait(1.8)
+      chr.WingsPRIME:SetAttribute("SpeedZ", -5)
+      maxGlitches-=1
+      wait(0.2)
+    end
+    chr.WingsPRIME:SetAttribute("SpeedZ", 12)
+end)
 wait(51)
 local cam = workspace.CurrentCamera
 local CC=Instance.new("ColorCorrectionEffect", game.Lighting)
