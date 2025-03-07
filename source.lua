@@ -1,8 +1,8 @@
-print("VERSION: Test 02-01") --version!!
+print("VERSION: Test 02-02") --version!!
 print("Creator: Aedaniss7 on scriptblox")
 local folder="AeSGR/" --start :D
 local songP="PRIME.mp3" 
-local rbxlP="PRIME.rbxl"
+local rbxlP="PRIME V2.rbxl"
 local songURL="https://raw.githubusercontent.com/softbf395/SGPrime-Moveset/refs/heads/main/PRIME.mp3"
 local rbxlURL="https://raw.githubusercontent.com/softbf395/SGPrime-Moveset/refs/heads/main/PRIME.rbxm"
 function runScript(source, origin)
@@ -11,14 +11,34 @@ function runScript(source, origin)
       loadstring(Run)()
     end)
 end
+function TypewriterText2(Text, TL, ttf)
+  spawn(function()
+      TL.Text=Text
+      TL.MaxVisibleGraphemes=0
+      local tss=game:GetService("TweenService")
+      tss:Create(TL, TweenInfo.new(ttf, Enum.EasingStyle.Linear), {MaxVisibleGraphemes=string.len(Text)}):Play()
+    end)
+end
 function saveFilee(path, content, useURLV)
   local useURL = useURLV or false
   if not isfile(path) then
+    local savingUI=Instance.new("ScreenGui")
+    savingUI.Parent=game.Players.LocalPlayer.PlayerGui
+    local savingText=Instance.new("TextLabel")
+    savingText.Text=""
+    savingText.BackgroundColor3=Color3.new(0,0,0)
+    savingText.BorderColor3=Color3.new(1,1,1)
+    savingText.BorderSizePixel=5
+    savingText.Font=Enum.Font.Jura
+    savingText.Size=UDim2.new(1,0,0.3,0)
+    savingText.TextXAlignment=Enum.TextXAlignment.Left
+    TypewriterText2("Downloading " ..folder..path.."...", savingText, 1)
     if useURL == true then
       writefile(folder..path, game:HttpGet(content))
     else
       writefile(folder..path, content)
     end
+    savingUI:Destroy()
   end
 end
 function spawnRBXL(path)
@@ -26,6 +46,7 @@ function spawnRBXL(path)
   return game:GetObjects(ins)[1]
 end
 saveFilee(songP, songURL, true)
+saveFilee(rbxlP, rbxlURL, true)
 local PRIME=spawnRBXL(rbxlP)
 PRIME.Torso.BottomPiece.WeldConstraint.Part1=PRIME.Torso.BottomPiece
 PRIME.PrimaryPart=PRIME.HumanoidRootPart
