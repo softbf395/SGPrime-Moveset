@@ -217,20 +217,26 @@ spawn(function() --the wing animations--
     end
     chr.WingsPRIME:SetAttribute("SpeedZ", 12)
 end)
+local CD={}
 local uis=game:GetService("UserInputService")
 uis.InputBegan:Connect(function(input, typing)
     local ismobile = uis.TouchEnabled
     if typing then return end
+    if table.find(CD, input.KeyCode.Name) then return end
     if input.KeyCode==Enum.KeyCode.Z then
       if ismobile then
+        CD[input.KeyCode.Name]=true
         inv.Keybinds.Z.CD.Size=UDim2.new(1,0,-1,0)
         game:GetService("TweenService"):Create(inv.Keybinds.Z.CD, TweenInfo.new(20), {Size=UDim2.new(1,0,0,0)}):Play()
+        spawn(function() wait(20) CD[input.KeyCode.Name]=false end)
       end
       VIM:SendKeyEvent(true, "One", false, nil)
       wait(0.1)
       VIM:SendKeyEvent(false, "One", false, nil)
     elseif input.KeyCode==Enum.KeyCode.X then
       if ismobile then
+        CD[input.KeyCode.Name]=true
+        spawn(function() wait(15) CD[input.KeyCode.Name]=false end)
         inv.Keybinds.X.CD.Size=UDim2.new(1,0,-1,0)
         game:GetService("TweenService"):Create(inv.Keybinds.X.CD, TweenInfo.new(15), {Size=UDim2.new(1,0,0,0)}):Play()
       end
@@ -239,7 +245,9 @@ uis.InputBegan:Connect(function(input, typing)
       VIM:SendKeyEvent(false, "Two", false, nil)
       elseif input.KeyCode==Enum.KeyCode.C then
       if ismobile then
+        CD[input.KeyCode.Name]=true
         inv.Keybinds.C.CD.Size=UDim2.new(1,0,-1,0)
+        spawn(function() wait(10) CD[input.KeyCode.Name]=false end)
         game:GetService("TweenService"):Create(inv.Keybinds.C.CD, TweenInfo.new(10), {Size=UDim2.new(1,0,0,0)}):Play()
       end
       VIM:SendKeyEvent(true, "Three", false, nil)
