@@ -31,6 +31,7 @@ PRIME.Torso.BottomPiece.WeldConstraint.Part1=PRIME.Torso.BottomPiece
 PRIME.PrimaryPart=PRIME.HumanoidRootPart
 PRIME.PrimaryPart.Anchored=true
 PRIME.Parent=workspace
+PRIME.Head.title.TextLabel.Visible=true
 PRIME:SetPrimaryPartCFrame(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 PRIME.Head.title.TextLabel.GUI.Enabled=false
 PRIME.Head.title.TextLabel.LocalScript.Enabled=false
