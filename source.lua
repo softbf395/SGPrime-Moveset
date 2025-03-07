@@ -221,17 +221,17 @@ local uis=game:GetService("UserInputService")
 uis.InputBegan:Connect(function(input, typing)
     if typing then return end
     if input.KeyCode==Enum.KeyCode.Z then
-      VIM:SendKeyEvent(true, "One", false)
+      VIM:SendKeyEvent(true, "One", false, nil)
       wait(0.1)
-      VIM:SendKeyEvent(false, "One", false)
+      VIM:SendKeyEvent(false, "One", false, nil)
     elseif input.KeyCode==Enum.KeyCode.X then
-      VIM:SendKeyEvent(true, "Two", false)
+      VIM:SendKeyEvent(true, "Two", false, nil)
       wait(0.1)
-      VIM:SendKeyEvent(false, "Two", false)
+      VIM:SendKeyEvent(false, "Two", false, nil)
       elseif input.KeyCode==Enum.KeyCode.C then
-      VIM:SendKeyEvent(true, "Three", false)
+      VIM:SendKeyEvent(true, "Three", false, nil)
       wait(0.1)
-      VIM:SendKeyEvent(false, "Three", false)
+      VIM:SendKeyEvent(false, "Three", false, nil)
     end
  end)
 wait(51)
