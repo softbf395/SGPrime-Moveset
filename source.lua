@@ -224,15 +224,15 @@ uis.InputBegan:Connect(function(input, typing)
     if input.KeyCode==Enum.KeyCode.Z then
       if ismobile then
         inv.Keybinds.Z.CD.Size=UDim2.new(1,0,-1,0)
-        game:GetService("TweenServixe"):Create(inv.Keybinds.Z.CD, TweenInfo.new(20), {Size=UDim2.new(1,0,0,0)}):Play()
+        game:GetService("TweenService"):Create(inv.Keybinds.Z.CD, TweenInfo.new(20), {Size=UDim2.new(1,0,0,0)}):Play()
       end
       VIM:SendKeyEvent(true, "One", false, nil)
       wait(0.1)
       VIM:SendKeyEvent(false, "One", false, nil)
     elseif input.KeyCode==Enum.KeyCode.X then
       if ismobile then
-        inv.Keybinds.C.CD.Size=UDim2.new(1,0,-1,0)
-        game:GetService("TweenServixe"):Create(inv.Keybinds.C.CD, TweenInfo.new(15), {Size=UDim2.new(1,0,0,0)}):Play()
+        inv.Keybinds.X.CD.Size=UDim2.new(1,0,-1,0)
+        game:GetService("TweenService"):Create(inv.Keybinds.X.CD, TweenInfo.new(15), {Size=UDim2.new(1,0,0,0)}):Play()
       end
       VIM:SendKeyEvent(true, "Two", false, nil)
       wait(0.1)
@@ -240,7 +240,7 @@ uis.InputBegan:Connect(function(input, typing)
       elseif input.KeyCode==Enum.KeyCode.C then
       if ismobile then
         inv.Keybinds.C.CD.Size=UDim2.new(1,0,-1,0)
-        game:GetService("TweenServixe"):Create(inv.Keybinds.C.CD, TweenInfo.new(10), {Size=UDim2.new(1,0,0,0)}):Play()
+        game:GetService("TweenService"):Create(inv.Keybinds.C.CD, TweenInfo.new(10), {Size=UDim2.new(1,0,0,0)}):Play()
       end
       VIM:SendKeyEvent(true, "Three", false, nil)
       wait(0.1)
