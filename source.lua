@@ -217,6 +217,23 @@ spawn(function() --the wing animations--
     end
     chr.WingsPRIME:SetAttribute("SpeedZ", 12)
 end)
+local uis=game:GetService("UserInputService")
+uis.InputBegan:Connect(function(input, typing)
+    if typing then return end
+    if input.KeyCode==Enum.Keycode.Z then
+      VIM:SendKeyEvent(true, "One", false)
+      wait(0.1)
+      VIM:SendKeyEvent(false, "One", false)
+    elseif input.KeyCode==Enum.KeyCode.X then
+      VIM:SendKeyEvent(true, "Two", false)
+      wait(0.1)
+      VIM:SendKeyEvent(false, "Two", false)
+      elseif input.KeyCode==Enum.KeyCode.C then
+      VIM:SendKeyEvent(true, "Three", false)
+      wait(0.1)
+      VIM:SendKeyEvent(false, "Three", false)
+    end
+ end)
 wait(51)
 local cam = workspace.CurrentCamera
 local CC=Instance.new("ColorCorrectionEffect", game.Lighting)
