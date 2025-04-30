@@ -223,6 +223,7 @@ if not isfile("SGP/XPLVL.txt") then
     XP=tonumber(split[1])
      LEVEL=tonumber(split[2])
 end
+FlyTime=20+(20*LEVEL)
 XPBar.TextLabel.Text="XP: 0/10"
 spawn(function()
     while task.wait() do
@@ -238,6 +239,7 @@ spawn(function()
       MaxFlyTime=20+(20*LEVEL)
       if isFlying==false and FlyTime<MaxFlyTime then FlyTime+=0.1 end
       LVL.Current.Size=UDim2.new(LEVEL/100,0,1,0)
+      FlyTimeBar.Current.Size=UDim2.new(FlyTime/MaxFlyTime,0,1,0)
       XPBar.Current.Size=UDim2.new(XP/maxXP,0,1,0)
       MaxSpeed.TextLabel.Text="MAX SPEED: "..humanoid.WalkSpeed.."/"..16*100
       MaxSpeed.Current.Size=UDim2.new(humanoid.WalkSpeed/16*100,0,1,0)
@@ -308,7 +310,7 @@ uis.InputBegan:Connect(function(input, typing)
           humanoid.Parent.HumanoidRootPart.Velocity = cam.CFrame.LookVector * speed
           wait(0.1)
           if FlyTime>0 then
-            FlyTime-=1
+            FlyTime-=0.1
           else
             isFlying=false
           end
