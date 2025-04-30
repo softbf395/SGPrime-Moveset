@@ -223,7 +223,7 @@ if not isfile("SGP/XPLVL.txt") then
     XP=tonumber(split[1])
      LEVEL=tonumber(split[2])
 end
-FlyTime=20+(20*LEVEL)
+FlyTime=20+(20*(LEVEL-1))
 XPBar.TextLabel.Text="XP: 0/10"
 spawn(function()
     while task.wait() do
@@ -236,7 +236,7 @@ spawn(function()
       XPBar.TextLabel.Text="XP: "..XP.."/"..maxXP
       maxXP=10+(XPGain*LEVEL)
       FlyTimeBar.TextLabel.Text="FLY TIME: "..FlyTime.."/"..MaxFlyTime
-      MaxFlyTime=20+(20*LEVEL)
+      MaxFlyTime=20+(20*(LEVEL-1))
       if isFlying==false and FlyTime<MaxFlyTime then FlyTime+=0.1 end
       LVL.Current.Size=UDim2.new(LEVEL/100,0,1,0)
       FlyTimeBar.Current.Size=UDim2.new(FlyTime/MaxFlyTime,0,1,0)
