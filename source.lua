@@ -114,43 +114,23 @@ local function tweenC0(motor, targetC0, duration)
 end
 
 local isIdle = false
-
+local animation=Instance.new("Animation")
+animation.AnimationId="rbxassetid://73949048256257"
+animation = humanoid:LoadAnimation(animation)
+animation.Looped=true
 game:GetService("RunService").RenderStepped:Connect(function()
     if humanoid.MoveDirection.Magnitude < 0.1 then
         if not isIdle then
             isIdle = true
             
             -- Floating 3 studs above ground
-            spawn(function()
-                while isIdle do
-                    tweenC0(rootJoint, CFrame.new(0, 3, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)), 0.5)
-                    wait(0.5)
-                    tweenC0(rootJoint, CFrame.new(1, 4, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)), 0.5)
-                    wait(0.5)
-                    tweenC0(rootJoint, CFrame.new(-1, 2, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)), 0.5)
-                    wait(0.5)
-                    tweenC0(rootJoint, CFrame.new(-1.5, 4, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0)), 0.5)
-                    wait(0.5)
-                end
-            end)
-
-            -- **Arm Positions (Raised & Tilted)**
-            tweenC0(rightShoulder, CFrame.new(1.2, 0.5, 0) * CFrame.Angles(math.rad(180), math.rad(15), math.rad(-25)), 0.5)
-            tweenC0(leftShoulder, CFrame.new(-1.2, 0.5, 0) * CFrame.Angles(math.rad(70), math.rad(-15), math.rad(-30)), 0.5)
-
-            -- **Leg Positions (Bent Slightly Forward)**
-            tweenC0(rightHip, CFrame.new(0, -1, 0.2) * CFrame.Angles(math.rad(20), math.rad(90), math.rad(10)), 0.5)
-            tweenC0(leftHip, CFrame.new(0, -1, 0.2) * CFrame.Angles(math.rad(-20), math.rad(-90), math.rad(0)), 0.5)
+           animation:Play()
         end
     else
         if isIdle then
             isIdle = false
             -- Reset Position
-            tweenC0(rootJoint, CFrame.new(0, 3, 0), 0.5)
-            tweenC0(rightShoulder, CFrame.new(1, 0.5, 0) * CFrame.Angles(math.rad(0), math.rad(90), math.rad(0)), 0.5)
-            tweenC0(leftShoulder, CFrame.new(-1, 0.5, 0) * CFrame.Angles(math.rad(0), math.rad(-90), math.rad(0)), 0.5)
-            tweenC0(rightHip, CFrame.new(0, -1, 0) * CFrame.Angles(math.rad(0), math.rad(90), math.rad(0)), 0.5)
-            tweenC0(leftHip, CFrame.new(-0, -1, 0) * CFrame.Angles(math.rad(0), math.rad(-90), math.rad(0)), 0.5)
+            animation:Stop()
         end
     end
 end) -- fixed
@@ -224,6 +204,8 @@ local CD={
   F=50
 }
 local uis=game:GetService("UserInputService")
+local isFlying=false
+local cam=workspace.CurrentCamera
 uis.InputBegan:Connect(function(input, typing)
     local ismobile = uis.TouchEnabled
     if typing then return end
@@ -248,6 +230,19 @@ uis.InputBegan:Connect(function(input, typing)
       VIM:SendKeyEvent(true, "Three", false, nil)
       wait(0.1)
       VIM:SendKeyEvent(false, "Three", false, nil)
+    elseif input.KeyCode==Enum.KeyCode.F then
+      isFlying=not isFlying
+      local dirFly = cam.CFrame.LookVector
+      local speed = 0
+      if isFlying then
+        while isFlying==true do
+          if speed < 100 then
+            speed +=1
+          end
+          humanoid.Parent.HumanoidRootPart.Velocity = cam.CFrame.LookVector * speed
+          wait()
+        end
+      end
     end
  end)
 wait(51)
