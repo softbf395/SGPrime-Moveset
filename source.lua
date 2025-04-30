@@ -269,6 +269,9 @@ spawn(function()
     end
   end)
 local cam=workspace.CurrentCamera
+humanoid.Died:Connect(function()
+    music:Destroy()
+end)
 uis.InputBegan:Connect(function(input, typing)
     local ismobile = uis.TouchEnabled
     if typing then return end
