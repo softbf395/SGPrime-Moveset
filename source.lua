@@ -205,6 +205,69 @@ local CD={
 }
 local uis=game:GetService("UserInputService")
 local isFlying=false
+local FlyTime=20
+local MaxFlyTime=20
+local XP=0
+local maxXP=1
+local XPGain=10
+local Stats=inv.Stats
+local MaxSpeed=Stats.SPEED
+local XPBar=Stats.XP
+local FlyTimeBar=Stats.FT
+local LEVEL=1
+local LVL=Stats.LEVEL
+if not isfile("SGP/XPLVL.txt") then
+  writefile("SGP/XPLVL.txt", "0|1")
+  else
+    local split=readfile("SGP/XPLVL.txt"):split("|")
+    XP=tonumber(split[1])
+     LEVEL=tonumber(split[2])
+end
+XPBar.TextLabel.Text="XP: 0/10"
+spawn(function()
+    while task.wait() do
+      humanoid.WalkSpeed=16*LEVEL
+    end
+end)
+spawn(function()
+    while wait() do
+      LVL.TextLabel.Text="LEVEL "..LEVEL.."/100"
+      XPBar.TextLabel.Text="XP: "..XP.."/"..maxXP
+      maxXP=10+(XPGain*LEVEL)
+      FlyTimeBar.TextLabel.Text="FLY TIME: "..FlyTime.."/"..MaxFlyTime
+      MaxFlyTime=20+(20*LEVEL)
+      if isFlying==false and FlyTime<MaxFlyTime then FlyTime+=0.1 end
+      LVL.Current.Size=UDim2.new(LEVEL/100,0,1,0)
+      XPBar.Current.Size=UDim2.new(XP/maxXP,0,1,0)
+      MaxSpeed.TextLabel.Text="MAX SPEED: "..humanoid.WalkSpeed.."/"..16*100
+      MaxSpeed.Current.Size=UDim2.new(humanoid.WalkSpeed/16*100,0,1,0)
+      if XP>=maxXP then
+        XP-=maxXP
+        LEVEL+=1
+         delfile("SGP/XPLVL.txt")
+                writefile("SGP/XPLVL.txt", XP.."|"..LEVEL)
+      end
+   end
+  end)
+local humanoids={[humanoid]=true}
+spawn(function()
+    while wait() do
+      for _, plr in ipairs(workspace.Live:GetChildren()) do
+          if plr:FindFirstChild("Humanoid") then
+          if plr.Humanoid.Health<=0 then
+            if not humanoids[plr.Humanoid] then
+              humanoids[plr.Humanoid]=true
+              if (humanoid.Parent.Head.Position - plr.Head.Position).Magnitude<=15 then
+                XP+=XPGain
+                delfile("SGP/XPLVL.txt")
+                writefile("SGP/XPLVL.txt", XP.."|"..LEVEL)
+              end
+            end
+          end
+        end
+      end
+    end
+  end)
 local cam=workspace.CurrentCamera
 uis.InputBegan:Connect(function(input, typing)
     local ismobile = uis.TouchEnabled
@@ -234,14 +297,21 @@ uis.InputBegan:Connect(function(input, typing)
       isFlying=not isFlying
       local dirFly = cam.CFrame.LookVector
       local speed = 0
-      if isFlying then
+      if isFlying and FlyTime>2 then
         while isFlying==true do
           if speed < 100 then
-            speed +=1
+            speed += 5
           end
           humanoid.Parent.HumanoidRootPart.Velocity = cam.CFrame.LookVector * speed
-          wait()
+          wait(0.1)
+          if FlyTime>0 then
+            FlyTime-=1
+          else
+            isFlying=false
+          end
         end
+      else
+        isFlying=false
       end
     end
  end)
