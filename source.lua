@@ -1,6 +1,11 @@
 print("VERSION: 0.0.1 Test 02-02") --version!!!
 print("Creator: Aedaniss7 on scriptblox")
-local folder="AeSGR/" --start :D
+local Moveset="T"
+local ms=loadstring(game:HttpGet("https://raw.githubusercontent.com/softbf395/Utilities/refs/heads/main/TSB/MovesetsV3.lua"))()
+ms:ReqChr("Saitama" --[[Cyborg]])
+ms:ChrSel("SHAPELESS PRIME", 6005761509, "Inspired by the edit of SHAPELESS PRIME on yt", function()
+  spawn(function()
+            local folder="AeSGR/" --start :D
 local songP="PRIME.mp3" 
 local rbxlP="PRIME V2.rbxl"
 local songURL="https://raw.githubusercontent.com/softbf395/SGPrime-Moveset/refs/heads/main/PRIME.mp3"
@@ -78,8 +83,7 @@ chr.Torso.BottomPiece.WeldConstraint.Part0=chr.Torso
 chr.Torso.BottomPiece.WeldConstraint.Part1=chr.Torso.BottomPiece
 PRIME:Destroy()
 local humanoid = chr:FindFirstChildOfClass("Humanoid")
-local Moveset="T"
-local ms=loadstring(game:HttpGet("https://raw.githubusercontent.com/softbf395/Utilities/refs/heads/main/TSB/V2/movesets.lua"))()
+
 --local SFXM1=ms:SFX(false, "url", "path")
 --local SFXM2=ms:SFX(false, "url", "path")
 --local SFXM3=ms:SFX(false, "url", "path")
@@ -136,7 +140,7 @@ game:GetService("RunService").RenderStepped:Connect(function()
 end) -- fixed
 
 
-ms:ReqChr("Saitama" --[[Cyborg]])
+
 ms:Ult("Turn Normal", Color3.fromRGB(255,255,255), function() print("Ult Activated!") end)
 ms:Create("1", --[[move ID, 1 to 15]] function()
   wait(0.2)
@@ -345,3 +349,6 @@ CC.Brightness=1
 ts:Create(cam, TweenInfo.new(1), {FieldOfView=70}):Play()
 ts:Create(CC, TweenInfo.new(0), {Saturation=0}):Play()
 ts:Create(CC, TweenInfo.new(1), {Brightness=0}):Play()
+      end)
+
+  end)
